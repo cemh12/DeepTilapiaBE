@@ -1,0 +1,36 @@
+﻿@model DeepTilapiaBackEnd.Models.AlimentoSuplidor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AlimentoSuplidor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDAlimento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IDAlimento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IDSuplidor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IDSuplidor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,119 @@
+﻿@model IEnumerable<DeepTilapiaBackEnd.Models.GrupoTilapia>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PesoPromedio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etapa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaLlegada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoXPeso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoXUnidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TemperaturaSuplidor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhSuplidor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TemperaturaTransporte)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhTransporte)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TemperaturaRecibimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhRecibimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DistanciaTransporte)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetodoTransporte)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PesoPromedio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etapa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaLlegada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoXPeso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoXUnidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TemperaturaSuplidor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhSuplidor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TemperaturaTransporte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhTransporte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TemperaturaRecibimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhRecibimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DistanciaTransporte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetodoTransporte)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

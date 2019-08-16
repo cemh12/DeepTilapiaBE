@@ -1,0 +1,58 @@
+﻿@model DeepTilapiaBackEnd.Models.JaulaGrupo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>JaulaGrupo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IDJaula" class="control-label"></label>
+                <input asp-for="IDJaula" class="form-control" />
+                <span asp-validation-for="IDJaula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDGrupoTilapia" class="control-label"></label>
+                <input asp-for="IDGrupoTilapia" class="form-control" />
+                <span asp-validation-for="IDGrupoTilapia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaInicio" class="control-label"></label>
+                <input asp-for="FechaInicio" class="form-control" />
+                <span asp-validation-for="FechaInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaFin" class="control-label"></label>
+                <input asp-for="FechaFin" class="form-control" />
+                <span asp-validation-for="FechaFin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDJaulaGrupoAnterior" class="control-label"></label>
+                <input asp-for="IDJaulaGrupoAnterior" class="form-control" />
+                <span asp-validation-for="IDJaulaGrupoAnterior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

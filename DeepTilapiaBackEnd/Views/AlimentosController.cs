@@ -1,0 +1,153 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using DeepTilapiaBackEnd.Data;
+using DeepTilapiaBackEnd.Models;
+
+namespace DeepTilapiaBackEnd.Views
+{
+    public class AlimentosController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public AlimentosController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: Alimentoes
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Alimentos.ToListAsync());
+        }
+
+        // GET: Alimentoes/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var alimento = await _context.Alimentos
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (alimento == null)
+            {
+                return NotFound();
+            }
+
+            return View(alimento);
+        }
+
+        // GET: Alimentoes/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Alimentoes/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ID,Nombre,PorcentajeProteina,PorcentajeCarbohidratos,Vitaminas,CantidadInventario,Etapa,Unidad")] Alimento alimento)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(alimento);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(alimento);
+        }
+
+        // GET: Alimentoes/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var alimento = await _context.Alimentos.FindAsync(id);
+            if (alimento == null)
+            {
+                return NotFound();
+            }
+            return View(alimento);
+        }
+
+        // POST: Alimentoes/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Nombre,PorcentajeProteina,PorcentajeCarbohidratos,Vitaminas,CantidadInventario,Etapa,Unidad")] Alimento alimento)
+        {
+            if (id != alimento.ID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(alimento);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!AlimentoExists(alimento.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(alimento);
+        }
+
+        // GET: Alimentoes/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var alimento = await _context.Alimentos
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (alimento == null)
+            {
+                return NotFound();
+            }
+
+            return View(alimento);
+        }
+
+        // POST: Alimentoes/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var alimento = await _context.Alimentos.FindAsync(id);
+            _context.Alimentos.Remove(alimento);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool AlimentoExists(int id)
+        {
+            return _context.Alimentos.Any(e => e.ID == id);
+        }
+    }
+}

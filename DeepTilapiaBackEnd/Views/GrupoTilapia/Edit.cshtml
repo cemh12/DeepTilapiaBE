@@ -1,0 +1,104 @@
+﻿@model DeepTilapiaBackEnd.Models.GrupoTilapia
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>GrupoTilapia</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PesoPromedio" class="control-label"></label>
+                <input asp-for="PesoPromedio" class="form-control" />
+                <span asp-validation-for="PesoPromedio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Etapa" class="control-label"></label>
+                <input asp-for="Etapa" class="form-control" />
+                <span asp-validation-for="Etapa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaLlegada" class="control-label"></label>
+                <input asp-for="FechaLlegada" class="form-control" />
+                <span asp-validation-for="FechaLlegada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostoXPeso" class="control-label"></label>
+                <input asp-for="CostoXPeso" class="form-control" />
+                <span asp-validation-for="CostoXPeso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostoXUnidad" class="control-label"></label>
+                <input asp-for="CostoXUnidad" class="form-control" />
+                <span asp-validation-for="CostoXUnidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TemperaturaSuplidor" class="control-label"></label>
+                <input asp-for="TemperaturaSuplidor" class="form-control" />
+                <span asp-validation-for="TemperaturaSuplidor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhSuplidor" class="control-label"></label>
+                <input asp-for="PhSuplidor" class="form-control" />
+                <span asp-validation-for="PhSuplidor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TemperaturaTransporte" class="control-label"></label>
+                <input asp-for="TemperaturaTransporte" class="form-control" />
+                <span asp-validation-for="TemperaturaTransporte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhTransporte" class="control-label"></label>
+                <input asp-for="PhTransporte" class="form-control" />
+                <span asp-validation-for="PhTransporte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TemperaturaRecibimiento" class="control-label"></label>
+                <input asp-for="TemperaturaRecibimiento" class="form-control" />
+                <span asp-validation-for="TemperaturaRecibimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhRecibimiento" class="control-label"></label>
+                <input asp-for="PhRecibimiento" class="form-control" />
+                <span asp-validation-for="PhRecibimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DistanciaTransporte" class="control-label"></label>
+                <input asp-for="DistanciaTransporte" class="form-control" />
+                <span asp-validation-for="DistanciaTransporte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaSalida" class="control-label"></label>
+                <input asp-for="FechaSalida" class="form-control" />
+                <span asp-validation-for="FechaSalida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetodoTransporte" class="control-label"></label>
+                <input asp-for="MetodoTransporte" class="form-control" />
+                <span asp-validation-for="MetodoTransporte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
