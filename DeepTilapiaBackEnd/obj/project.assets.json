@@ -12535,23 +12535,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cemh_\\.nuget\\packages\\": {},
+    "C:\\Users\\Dhamar\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cemh_\\source\\repos\\DeepTilapiaBackEnd\\DeepTilapiaBackEnd\\DeepTilapiaBackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\Dhamar\\Documents\\DeepTilapiaBackEnd\\DeepTilapiaBackEnd\\DeepTilapiaBackEnd.csproj",
       "projectName": "DeepTilapiaBackEnd",
-      "projectPath": "C:\\Users\\cemh_\\source\\repos\\DeepTilapiaBackEnd\\DeepTilapiaBackEnd\\DeepTilapiaBackEnd.csproj",
-      "packagesPath": "C:\\Users\\cemh_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cemh_\\source\\repos\\DeepTilapiaBackEnd\\DeepTilapiaBackEnd\\obj\\",
+      "projectPath": "C:\\Users\\Dhamar\\Documents\\DeepTilapiaBackEnd\\DeepTilapiaBackEnd\\DeepTilapiaBackEnd.csproj",
+      "packagesPath": "C:\\Users\\Dhamar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Dhamar\\Documents\\DeepTilapiaBackEnd\\DeepTilapiaBackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\cemh_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dhamar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12587,6 +12587,7 @@
             "version": "[2.1.2, )"
           },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true

@@ -19,13 +19,13 @@ namespace DeepTilapiaBackEnd.Views
             _context = context;
         }
 
-        // GET: AlimentoSuplidors
+        // GET: AlimentoSuplidor
         public async Task<IActionResult> Index()
         {
             return View(await _context.AlimentosSuplidores.ToListAsync());
         }
 
-        // GET: AlimentoSuplidors/Details/5
+        // GET: AlimentoSuplidor/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,18 +43,18 @@ namespace DeepTilapiaBackEnd.Views
             return View(alimentoSuplidor);
         }
 
-        // GET: AlimentoSuplidors/Create
+        // GET: AlimentoSuplidor/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: AlimentoSuplidors/Create
+        // POST: AlimentoSuplidor/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,IDAlimento,IDSuplidor,Precio")] AlimentoSuplidor alimentoSuplidor)
+        public async Task<IActionResult> Create([Bind("ID,Precio")] AlimentoSuplidor alimentoSuplidor)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace DeepTilapiaBackEnd.Views
             return View(alimentoSuplidor);
         }
 
-        // GET: AlimentoSuplidors/Edit/5
+        // GET: AlimentoSuplidor/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,12 +81,12 @@ namespace DeepTilapiaBackEnd.Views
             return View(alimentoSuplidor);
         }
 
-        // POST: AlimentoSuplidors/Edit/5
+        // POST: AlimentoSuplidor/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,IDAlimento,IDSuplidor,Precio")] AlimentoSuplidor alimentoSuplidor)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Precio")] AlimentoSuplidor alimentoSuplidor)
         {
             if (id != alimentoSuplidor.ID)
             {
@@ -116,7 +116,7 @@ namespace DeepTilapiaBackEnd.Views
             return View(alimentoSuplidor);
         }
 
-        // GET: AlimentoSuplidors/Delete/5
+        // GET: AlimentoSuplidor/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +134,7 @@ namespace DeepTilapiaBackEnd.Views
             return View(alimentoSuplidor);
         }
 
-        // POST: AlimentoSuplidors/Delete/5
+        // POST: AlimentoSuplidor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

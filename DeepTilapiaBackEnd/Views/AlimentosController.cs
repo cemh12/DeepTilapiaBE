@@ -19,13 +19,13 @@ namespace DeepTilapiaBackEnd.Views
             _context = context;
         }
 
-        // GET: Alimentoes
+        // GET: Alimentos
         public async Task<IActionResult> Index()
         {
             return View(await _context.Alimentos.ToListAsync());
         }
 
-        // GET: Alimentoes/Details/5
+        // GET: Alimentos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,13 +43,13 @@ namespace DeepTilapiaBackEnd.Views
             return View(alimento);
         }
 
-        // GET: Alimentoes/Create
+        // GET: Alimentos/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Alimentoes/Create
+        // POST: Alimentos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -65,7 +65,7 @@ namespace DeepTilapiaBackEnd.Views
             return View(alimento);
         }
 
-        // GET: Alimentoes/Edit/5
+        // GET: Alimentos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,7 +81,7 @@ namespace DeepTilapiaBackEnd.Views
             return View(alimento);
         }
 
-        // POST: Alimentoes/Edit/5
+        // POST: Alimentos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -116,7 +116,7 @@ namespace DeepTilapiaBackEnd.Views
             return View(alimento);
         }
 
-        // GET: Alimentoes/Delete/5
+        // GET: Alimentos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +134,7 @@ namespace DeepTilapiaBackEnd.Views
             return View(alimento);
         }
 
-        // POST: Alimentoes/Delete/5
+        // POST: Alimentos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

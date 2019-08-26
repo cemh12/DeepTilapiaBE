@@ -50,13 +50,17 @@ namespace DeepTilapiaBackEnd.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("IDAlimento");
-
-                    b.Property<int>("IDSuplidor");
-
                     b.Property<float>("Precio");
 
+                    b.Property<int?>("alimentoID");
+
+                    b.Property<int?>("suplidorAlimentoID");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("alimentoID");
+
+                    b.HasIndex("suplidorAlimentoID");
 
                     b.ToTable("AlimentosSuplidores");
                 });
@@ -97,7 +101,11 @@ namespace DeepTilapiaBackEnd.Data.Migrations
 
                     b.Property<float>("TemperaturaTransporte");
 
+                    b.Property<int?>("suplidorPecesID");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("suplidorPecesID");
 
                     b.ToTable("Grupos");
                 });
@@ -133,19 +141,29 @@ namespace DeepTilapiaBackEnd.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Activo");
+
                     b.Property<int>("Cantidad");
+
+                    b.Property<string>("Etapa");
 
                     b.Property<DateTime>("FechaFin");
 
                     b.Property<DateTime>("FechaInicio");
 
-                    b.Property<int>("IDGrupoTilapia");
+                    b.Property<int?>("JaulaGrupoAnteriorID");
 
-                    b.Property<int>("IDJaula");
+                    b.Property<int?>("grupoID");
 
-                    b.Property<int>("IDJaulaGrupoAnterior");
+                    b.Property<int?>("jaulaID");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("JaulaGrupoAnteriorID");
+
+                    b.HasIndex("grupoID");
+
+                    b.HasIndex("jaulaID");
 
                     b.ToTable("JaulaGrupos");
                 });
@@ -158,8 +176,6 @@ namespace DeepTilapiaBackEnd.Data.Migrations
 
                     b.Property<DateTime>("Fecha");
 
-                    b.Property<int>("IDJaulaGrupo");
-
                     b.Property<float>("Iluminacion");
 
                     b.Property<float>("Ph");
@@ -168,7 +184,11 @@ namespace DeepTilapiaBackEnd.Data.Migrations
 
                     b.Property<float>("Turbidez");
 
+                    b.Property<int?>("jaulaGrupoID");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("jaulaGrupoID");
 
                     b.ToTable("JaulasGrupoAguas");
                 });
@@ -183,11 +203,15 @@ namespace DeepTilapiaBackEnd.Data.Migrations
 
                     b.Property<DateTime>("Fecha");
 
-                    b.Property<int>("IDAlimento");
+                    b.Property<int?>("alimentoID");
 
-                    b.Property<int>("IDJaulaGrupo");
+                    b.Property<int?>("jaulaGrupoID");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("alimentoID");
+
+                    b.HasIndex("jaulaGrupoID");
 
                     b.ToTable("JaulasGrupoAlimentos");
                 });
@@ -202,9 +226,11 @@ namespace DeepTilapiaBackEnd.Data.Migrations
 
                     b.Property<DateTime>("Fecha");
 
-                    b.Property<int>("IDJaulaGrupo");
+                    b.Property<int?>("jaulaGrupoID");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("jaulaGrupoID");
 
                     b.ToTable("JaulasGrupoMuertes");
                 });
@@ -217,11 +243,13 @@ namespace DeepTilapiaBackEnd.Data.Migrations
 
                     b.Property<DateTime>("Fecha");
 
-                    b.Property<int>("IDJaulaGrupo");
-
                     b.Property<double>("PesoPromedio");
 
+                    b.Property<int?>("jaulaGrupoID");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("jaulaGrupoID");
 
                     b.ToTable("JaulasGrupoPeso");
                 });
@@ -429,6 +457,71 @@ namespace DeepTilapiaBackEnd.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("DeepTilapiaBackEnd.Models.AlimentoSuplidor", b =>
+                {
+                    b.HasOne("DeepTilapiaBackEnd.Models.Alimento", "alimento")
+                        .WithMany()
+                        .HasForeignKey("alimentoID");
+
+                    b.HasOne("DeepTilapiaBackEnd.Models.SuplidorAlimento", "suplidorAlimento")
+                        .WithMany("alimentoSuplidors")
+                        .HasForeignKey("suplidorAlimentoID");
+                });
+
+            modelBuilder.Entity("DeepTilapiaBackEnd.Models.GrupoTilapia", b =>
+                {
+                    b.HasOne("DeepTilapiaBackEnd.Models.SuplidorPeces", "suplidorPeces")
+                        .WithMany()
+                        .HasForeignKey("suplidorPecesID");
+                });
+
+            modelBuilder.Entity("DeepTilapiaBackEnd.Models.JaulaGrupo", b =>
+                {
+                    b.HasOne("DeepTilapiaBackEnd.Models.JaulaGrupo", "JaulaGrupoAnterior")
+                        .WithMany()
+                        .HasForeignKey("JaulaGrupoAnteriorID");
+
+                    b.HasOne("DeepTilapiaBackEnd.Models.GrupoTilapia", "grupo")
+                        .WithMany()
+                        .HasForeignKey("grupoID");
+
+                    b.HasOne("DeepTilapiaBackEnd.Models.Jaula", "jaula")
+                        .WithMany("jaulaGrupos")
+                        .HasForeignKey("jaulaID");
+                });
+
+            modelBuilder.Entity("DeepTilapiaBackEnd.Models.JaulaGrupoAgua", b =>
+                {
+                    b.HasOne("DeepTilapiaBackEnd.Models.JaulaGrupo", "jaulaGrupo")
+                        .WithMany("jaulaGrupoAguas")
+                        .HasForeignKey("jaulaGrupoID");
+                });
+
+            modelBuilder.Entity("DeepTilapiaBackEnd.Models.JaulaGrupoAlimento", b =>
+                {
+                    b.HasOne("DeepTilapiaBackEnd.Models.Alimento", "alimento")
+                        .WithMany()
+                        .HasForeignKey("alimentoID");
+
+                    b.HasOne("DeepTilapiaBackEnd.Models.JaulaGrupo", "jaulaGrupo")
+                        .WithMany("jaulaGrupoAlimentos")
+                        .HasForeignKey("jaulaGrupoID");
+                });
+
+            modelBuilder.Entity("DeepTilapiaBackEnd.Models.JaulaGrupoMuertes", b =>
+                {
+                    b.HasOne("DeepTilapiaBackEnd.Models.JaulaGrupo", "jaulaGrupo")
+                        .WithMany("jaulaGrupoMuertes")
+                        .HasForeignKey("jaulaGrupoID");
+                });
+
+            modelBuilder.Entity("DeepTilapiaBackEnd.Models.JaulaGrupoPeso", b =>
+                {
+                    b.HasOne("DeepTilapiaBackEnd.Models.JaulaGrupo", "jaulaGrupo")
+                        .WithMany("jaulaGrupoPesos")
+                        .HasForeignKey("jaulaGrupoID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

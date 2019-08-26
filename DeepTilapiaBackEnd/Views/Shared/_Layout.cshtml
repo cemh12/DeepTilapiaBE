@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DeepTilapiaBackEnd</title>
+    <title>@ViewData["Title"]</title>
 
-    <environment include="Development">
+    <!--<environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
@@ -15,8 +15,10 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+        -->
 </head>
 <body>
+    <!--
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -42,7 +44,9 @@
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
+        -->
         @RenderBody()
+    <!--
         <hr />
         <footer>
             <p>&copy; 2019 - DeepTilapiaBackEnd</p>
@@ -68,7 +72,7 @@
                 integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+    </environment>-->
 
     @RenderSection("Scripts", required: false)
 </body>
